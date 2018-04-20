@@ -1,7 +1,7 @@
 # ELB
 output "this_elb_id" {
   description = "The name of the ELB"
-  value       = "${var.create_elb ? element(aws_elb.this.*.id, 0) : var.elb_id}"
+  value       = "${var.create_elb ? element(aws_elb.this.*.id, 0) : ""}"
 }
 
 output "this_elb_arn" {
@@ -21,7 +21,6 @@ output "this_elb_dns_name" {
 
 output "this_elb_instances" {
   description = "The list of instances in the ELB"
-  value       = ["${aws_elb.this.instances}"]
   value       = ["${var.create_elb ? element(aws_elb.this.*.instances, 0) : list("")}"]
 }
 

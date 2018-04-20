@@ -4,7 +4,8 @@
 module "elb" {
   source = "./modules/elb"
 
-  name = "${var.name}"
+  count = "${var.create_elb}"
+  name  = "${var.name}"
 
   subnets         = ["${var.subnets}"]
   security_groups = ["${var.security_groups}"]
@@ -30,6 +31,6 @@ module "elb_attachment" {
 
   number_of_instances = "${var.number_of_instances}"
 
-  elb       = "${module.elb.this_elb_id}"
+  elb       = "${var.elb_id ? elb_id : module.elb.this_elb_id}"
   instances = "${var.instances}"
 }

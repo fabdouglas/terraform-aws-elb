@@ -3,6 +3,7 @@
 ######
 resource "aws_elb" "this" {
   name            = "${var.name}"
+  count           = "${var.create_elb}"
   subnets         = ["${var.subnets}"]
   internal        = "${var.internal}"
   security_groups = ["${var.security_groups}"]

@@ -2,6 +2,11 @@ variable "name" {
   description = "The name of the ELB"
 }
 
+variable "create_elb" {
+  description = "Whether to create the ELB"
+  default     = true
+}
+
 variable "security_groups" {
   description = "A list of security group IDs to assign to the ELB"
   type        = "list"

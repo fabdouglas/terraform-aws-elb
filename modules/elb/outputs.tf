@@ -1,22 +1,22 @@
 # ELB
 output "this_elb_id" {
   description = "The name of the ELB"
-  value       = "${var.create_elb ? element(aws_elb.this.*.id, 0) : ""}"
+  value       = "${join(",",aws_elb.this.*.id)}"
 }
 
 output "this_elb_arn" {
   description = "The ARN of the ELB"
-  value       = "${var.create_elb ? element(aws_elb.this.*.arn, 0) : ""}"
+  value       = "${join(",",aws_elb.this.*.arn)}"
 }
 
 output "this_elb_name" {
   description = "The name of the ELB"
-  value       = "${var.create_elb ? element(aws_elb.this.*.name, 0) : ""}"
+  value       = "${join(",",aws_elb.this.*.name)}"
 }
 
 output "this_elb_dns_name" {
   description = "The DNS name of the ELB"
-  value       = "${var.create_elb ? element(aws_elb.this.*.dns_name, 0) : ""}"
+  value       = "${join(",",aws_elb.this.*.dns_name)}"
 }
 
 output "this_elb_instances" {
@@ -26,10 +26,10 @@ output "this_elb_instances" {
 
 output "this_elb_source_security_group_id" {
   description = "The ID of the security group that you can use as part of your inbound rules for your load balancer's back-end application instances"
-  value       = "${var.create_elb ? element(aws_elb.this.*.source_security_group_id, 0) : ""}"
+  value       = "${join(",",aws_elb.this.*.this_elb_source_security_group_id)}"
 }
 
 output "this_elb_zone_id" {
   description = "The canonical hosted zone ID of the ELB (to be used in a Route 53 Alias record)"
-  value       = "${var.create_elb ? element(aws_elb.this.*.zone_id, 0) : ""}"
+  value       = "${join(",",aws_elb.this.*.zone_id)}"
 }

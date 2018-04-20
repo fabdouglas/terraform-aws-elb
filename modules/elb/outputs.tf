@@ -26,7 +26,7 @@ output "this_elb_instances" {
 
 output "this_elb_source_security_group_id" {
   description = "The ID of the security group that you can use as part of your inbound rules for your load balancer's back-end application instances"
-  value       = "${join(",",aws_elb.this.*.this_elb_source_security_group_id)}"
+  value       = "${join(",",aws_elb.this.*.source_security_group_id)}"
 }
 
 output "this_elb_zone_id" {

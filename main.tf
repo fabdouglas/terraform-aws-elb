@@ -31,6 +31,6 @@ module "elb_attachment" {
 
   number_of_instances = "${var.number_of_instances}"
 
-  elb       = "${var.elb_id ? var.elb_id : module.elb.this_elb_id}"
+  elb       = "${var.elb_id == "" ? module.elb.this_elb_id : var.elb_id}"
   instances = "${var.instances}"
 }

@@ -4,8 +4,8 @@
 module "elb" {
   source = "./modules/elb"
 
-  count = "${var.create_elb}"
-  name  = "${var.name}"
+  create_elb = "${var.create_elb}"
+  name       = "${var.name}"
 
   subnets         = ["${var.subnets}"]
   security_groups = ["${var.security_groups}"]

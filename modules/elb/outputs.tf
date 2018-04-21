@@ -21,7 +21,7 @@ output "this_elb_dns_name" {
 
 output "this_elb_instances" {
   description = "The list of instances in the ELB"
-  value       = ["${compact(split(",", var.create_elb ? join(",", aws_elb.this.*.instances) : ""))}"]
+  value       = ["${flatten(aws_elb.this.*.instances)}"]
 }
 
 output "this_elb_source_security_group_id" {
